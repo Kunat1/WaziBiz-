@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How to Publish WaziBiz Website Free</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --g:#25D366; --gd:#128C7E; --bg:#050e09; --card:#0d1f14;
+    --s1:#0b1a10; --s2:#0f2318; --bdr:#183525;
+    --txt:#e6f2ea; --mut:#4d7a5e;
+    --gold:#f0c040; --red:#ff5252; --org:#ff8c42; --blu:#4a9fff;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:'Syne',sans-serif;font-weight:900;}
+
+  /* HEADER */
+  .header{
+    background:linear-gradient(160deg,#061510 0%,var(--bg) 70%);
+    padding:56px 24px 44px;
+    text-align:center;
+    border-bottom:1px solid var(--bdr);
+    position:relative;
+    overflow:hidden;
+  }
+  .header::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 70% 60% at 50% 80%,rgba(37,211,102,0.08),transparent 60%);
+  }
+  .header-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);
+    border-radius:99px;padding:5px 16px;font-size:12px;color:var(--g);
+    font-weight:600;margin-bottom:20px;letter-spacing:.5px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--g);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .header h1{font-size:clamp(28px,5vw,54px);letter-spacing:-2px;line-height:1.05;margin-bottom:14px;}
+  .header h1 .g{color:var(--g);}
+  .header p{color:var(--mut);font-size:15px;line-height:1.7;max-width:500px;margin:0 auto 28px;}
+  .pill-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .pill{background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);
+    border-radius:99px;padding:5px 14px;font-size:11px;color:var(--g);font-weight:700;}
+
+  /* PROGRESS STRIP */
+  .progress-strip{
+    background:var(--s1);border-bottom:1px solid var(--bdr);
+    padding:16px 24px;display:flex;align-items:center;gap:0;
+    overflow-x:auto;position:sticky;top:0;z-index:50;
+    scrollbar-width:none;
+  }
+  .progress-strip::-webkit-scrollbar{display:none;}
+  .prog-step{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    min-width:64px;cursor:pointer;padding:4px 6px;border-radius:10px;
+    transition:background .2s;flex-shrink:0;
+  }
+  .prog-step:hover{background:rgba(37,211,102,0.06);}
+  .prog-num{
+    width:30px;height:30px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:700;transition:all .3s;
+    border:2px solid var(--bdr);color:var(--mut);
+  }
+  .prog-num.active{background:var(--g);border-color:var(--g);color:#111;}
+  .prog-num.done{background:rgba(37,211,102,0.15);border-color:var(--g);color:var(--g);}
+  .prog-lbl{font-size:9px;color:var(--mut);text-align:center;white-space:nowrap;max-width:60px;overflow:hidden;text-overflow:ellipsis;}
+  .prog-line{flex:1;height:2px;background:var(--bdr);min-width:12px;flex-shrink:0;align-self:center;margin-bottom:14px;}
+  .prog-line.done{background:var(--g);}
+
+  /* MAIN LAYOUT */
+  .main{max-width:860px;margin:0 auto;padding:40px 24px 80px;}
+
+  /* STEP CARD */
+  .step-section{display:none;animation:fadeUp .35s ease;}
+  .step-section.active{display:block;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+  .step-header{
+    background:var(--card);border:1px solid var(--bdr);border-radius:20px;
+    padding:28px 32px;margin-bottom:24px;position:relative;overflow:hidden;
+  }
+  .step-header::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--g),transparent);
+  }
+  .step-meta{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .step-num-big{
+    width:44px;height:44px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-size:20px;font-weight:900;
+    flex-shrink:0;
+  }
+  .step-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--g);}
+  .step-time{
+    margin-left:auto;background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);
+    border-radius:99px;padding:3px 12px;font-size:11px;color:var(--g);font-weight:600;
+    white-space:nowrap;
+  }
+  .step-title{font-size:clamp(22px,4vw,34px);letter-spacing:-1px;margin-bottom:10px;line-height:1.15;}
+  .step-intro{color:var(--mut);font-size:14px;line-height:1.7;}
+
+  /* CONTENT BLOCKS */
+  .block{margin-bottom:20px;}
+  .block-title{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+
+  /* CODE BLOCK */
+  .code-wrap{background:#061510;border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin:12px 0;}
+  .code-bar{
+    background:#040d09;padding:7px 14px;
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px solid var(--bdr);
+  }
+  .code-lang{font-size:10px;color:var(--mut);font-family:monospace;}
+  .copy-btn{
+    background:transparent;border:1px solid var(--bdr);color:var(--mut);
+    border-radius:6px;padding:3px 12px;font-size:10px;cursor:pointer;
+    font-family:'DM Sans',sans-serif;transition:all .2s;
+  }
+  .copy-btn:hover,.copy-btn.copied{background:rgba(37,211,102,0.1);border-color:var(--g);color:var(--g);}
+  pre{padding:16px;font-size:12px;color:#7dc99a;font-family:'Courier New',monospace;
+    overflow-x:auto;line-height:1.7;white-space:pre-wrap;word-break:break-word;}
+
+  /* TIP */
+  .tip{border-radius:10px;padding:12px 16px;margin:12px 0;display:flex;gap:10px;align-items:flex-start;}
+  .tip-free {background:rgba(37,211,102,0.07);border:1px solid rgba(37,211,102,0.2);}
+  .tip-info {background:rgba(74,159,255,0.07);border:1px solid rgba(74,159,255,0.2);}
+  .tip-warn {background:rgba(240,192,64,0.07);border:1px solid rgba(240,192,64,0.2);}
+  .tip-good {background:rgba(37,211,102,0.07);border:1px solid rgba(37,211,102,0.2);}
+  .tip-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+  .tip-text{font-size:13px;color:var(--txt);line-height:1.65;}
+
+  /* NUMBERED STEPS */
+  .num-steps{display:flex;flex-direction:column;gap:12px;margin:12px 0;}
+  .num-step{display:flex;gap:14px;align-items:flex-start;}
+  .n-badge{
+    width:28px;height:28px;border-radius:8px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:13px;background:rgba(37,211,102,0.1);
+    border:1px solid rgba(37,211,102,0.25);color:var(--g);
+  }
+  .n-title{font-weight:700;color:var(--txt);margin-bottom:3px;font-size:14px;}
+  .n-desc{color:var(--mut);font-size:13px;line-height:1.6;}
+  .n-link{
+    display:inline-flex;align-items:center;gap:6px;margin-top:6px;
+    background:var(--g);color:#0a1a0e;border-radius:8px;
+    padding:5px 14px;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s;
+  }
+  .n-link:hover{background:#1dba58;}
+
+  /* TOOL COMPARE */
+  .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0;}
+  .tool-card{
+    background:var(--card);border:1px solid var(--bdr);border-radius:14px;
+    padding:18px;transition:border-color .2s;cursor:default;
+  }
+  .tool-card:hover{border-color:rgba(37,211,102,0.3);}
+  .tool-icon{font-size:28px;margin-bottom:10px;}
+  .tool-name{font-weight:700;color:var(--txt);font-size:14px;margin-bottom:4px;}
+  .tool-cost{font-size:11px;font-weight:700;border-radius:99px;padding:2px 10px;display:inline-block;margin-bottom:8px;}
+  .tool-cost.free{background:rgba(37,211,102,0.1);color:var(--g);border:1px solid rgba(37,211,102,0.2);}
+  .tool-cost.paid{background:rgba(255,140,66,0.1);color:var(--org);border:1px solid rgba(255,140,66,0.2);}
+  .tool-desc{color:var(--mut);font-size:12px;line-height:1.5;}
+  .tool-rec{
+    margin-top:8px;font-size:10px;font-weight:700;color:var(--g);
+    display:flex;align-items:center;gap:4px;
+  }
+
+  /* CHECKLIST */
+  .checklist{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:20px;margin:16px 0;}
+  .checklist-title{font-weight:700;color:var(--txt);font-size:14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
+  .check-pct{color:var(--g);font-size:12px;}
+  .check-bar{background:var(--bdr);border-radius:99px;height:5px;margin-bottom:14px;}
+  .check-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gd),var(--g));transition:width .4s;}
+  .check-item{display:flex;gap:10px;margin-bottom:9px;cursor:pointer;align-items:flex-start;}
+  .check-box{
+    width:20px;height:20px;border-radius:6px;flex-shrink:0;margin-top:1px;
+    border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;
+    transition:all .2s;background:transparent;
+  }
+  .check-box.ticked{background:var(--g);border-color:var(--g);}
+  .check-box.ticked::after{content:'✓';color:#111;font-size:11px;font-weight:900;}
+  .check-lbl{font-size:13px;color:var(--txt);line-height:1.5;transition:all .2s;}
+  .check-lbl.done{color:var(--mut);text-decoration:line-through;}
+
+  /* NAV BUTTONS */
+  .step-nav{display:flex;justify-content:space-between;gap:12px;margin-top:28px;flex-wrap:wrap;}
+  .btn-back{
+    background:transparent;border:1px solid var(--bdr);color:var(--mut);
+    border-radius:12px;padding:12px 22px;font-size:14px;font-weight:600;
+    cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;
+  }
+  .btn-back:hover{border-color:var(--g);color:var(--g);}
+  .btn-next{
+    background:linear-gradient(90deg,var(--gd),var(--g));color:#0a1a0e;
+    border:none;border-radius:12px;padding:12px 28px;font-size:14px;font-weight:800;
+    cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;
+    box-shadow:0 6px 24px rgba(37,211,102,0.2);
+  }
+  .btn-next:hover{box-shadow:0 8px 30px rgba(37,211,102,0.35);transform:translateY(-1px);}
+  .btn-overview{
+    background:transparent;border:none;color:var(--mut);font-size:12px;
+    cursor:pointer;font-family:'DM Sans',sans-serif;transition:color .2s;
+  }
+  .btn-overview:hover{color:var(--g);}
+
+  /* OVERVIEW */
+  .overview-grid{display:flex;flex-direction:column;gap:10px;margin:24px 0;}
+  .ov-item{
+    background:var(--card);border:1px solid var(--bdr);border-radius:14px;
+    padding:16px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .2s;
+  }
+  .ov-item:hover{border-color:rgba(37,211,102,0.35);transform:translateX(4px);}
+  .ov-icon{font-size:24px;flex-shrink:0;}
+  .ov-num{
+    width:32px;height:32px;border-radius:10px;background:rgba(37,211,102,0.08);
+    border:1px solid rgba(37,211,102,0.2);display:flex;align-items:center;justify-content:center;
+    font-weight:900;color:var(--g);font-size:14px;flex-shrink:0;font-family:'Syne',sans-serif;
+  }
+  .ov-title{font-weight:700;color:var(--txt);font-size:14px;}
+  .ov-meta{color:var(--mut);font-size:12px;margin-top:2px;}
+  .ov-badge{
+    margin-left:auto;padding:3px 12px;border-radius:99px;font-size:10px;font-weight:700;
+    background:rgba(37,211,102,0.08);color:var(--g);border:1px solid rgba(37,211,102,0.2);
+    flex-shrink:0;white-space:nowrap;
+  }
+  .ov-badge.done{background:rgba(37,211,102,0.15);color:var(--g);}
+
+  /* COST TABLE */
+  .cost-table{width:100%;border-collapse:collapse;margin:12px 0;}
+  .cost-table th{text-align:left;padding:10px 14px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--bdr);}
+  .cost-table td{padding:10px 14px;font-size:13px;border-bottom:1px solid rgba(24,53,37,0.4);}
+  .cost-table tr:last-child td{border-bottom:none;}
+  .cost-table .cost-free{color:var(--g);font-weight:700;}
+  .cost-table .cost-total{color:var(--g);font-weight:900;font-size:15px;}
+
+  /* SCREENSHOT MOCK */
+  .screen-mock{
+    background:#1a1a2e;border:1px solid var(--bdr);border-radius:14px;
+    overflow:hidden;margin:14px 0;
+  }
+  .screen-bar{
+    background:#111;padding:8px 16px;display:flex;align-items:center;gap:8px;
+    border-bottom:1px solid var(--bdr);
+  }
+  .screen-dots{display:flex;gap:5px;}
+  .screen-dot{width:10px;height:10px;border-radius:50%;}
+  .screen-url{
+    flex:1;background:rgba(255,255,255,0.05);border-radius:6px;
+    padding:4px 12px;font-size:11px;color:var(--mut);font-family:monospace;
+    text-align:center;
+  }
+  .screen-body{padding:20px;min-height:80px;}
+
+  /* RESPONSIVE */
+  @media(max-width:600px){
+    .header{padding:48px 16px 36px;}
+    .main{padding:28px 16px 60px;}
+    .step-header{padding:20px;}
+    .progress-strip{padding:12px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="position:relative">
+    <div class="header-badge"><div class="dot"></div>Free · No Credit Card · Live in Under 1 Hour</div>
+    <h1>Publish <span class="g">WaziBiz</span><br/>Website for Free</h1>
+    <p>A step-by-step guide to get your WaziBiz landing page live on the internet — completely free, in under 60 minutes.</p>
+    <div class="pill-row">
+      <span class="pill">🚀 Netlify</span>
+      <span class="pill">📁 GitHub</span>
+      <span class="pill">🌐 Free Domain</span>
+      <span class="pill">🔒 Free HTTPS</span>
+      <span class="pill">⚡ 5 min deploy</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-strip" id="progressStrip"></div>
+
+<!-- MAIN -->
+<div class="main" id="mainContent"></div>
+
+<script>
+const STEPS = [
+  {
+    id:0, icon:"🗺️", label:"Overview", color:"#25D366",
+    title:"Your Free Publishing Plan", time:"2 min read",
+    tag:"START HERE",
+    intro:"Before we begin, here's the full picture. You'll go from a saved HTML file on your phone or PC to a live website with a real link — in under 60 minutes, spending R0.",
+  },
+  {
+    id:1, icon:"💾", label:"Get the file", color:"#25D366",
+    title:"Download Your WaziBiz HTML File", time:"5 min",
+    tag:"STEP 1 OF 6",
+    intro:"Your WaziBiz landing page is one single HTML file. You just need to save it to your phone or computer — then we'll push it live.",
+  },
+  {
+    id:2, icon:"📁", label:"GitHub", color:"#4a9fff",
+    title:"Create a Free GitHub Account", time:"10 min",
+    tag:"STEP 2 OF 6",
+    intro:"GitHub is a free platform where you store your website files. Think of it as Google Drive — but for websites. Netlify (Step 3) reads from GitHub to publish your site.",
+  },
+  {
+    id:3, icon:"🚀", label:"Netlify", color:"#ff8c42",
+    title:"Deploy on Netlify in 2 Minutes", time:"10 min",
+    tag:"STEP 3 OF 6",
+    intro:"Netlify is the easiest free hosting platform in the world. Drag your file in — it goes live instantly. No coding, no server, no setup.",
+  },
+  {
+    id:4, icon:"🌐", label:"Domain", color:"#f0c040",
+    title:"Get a Free or Cheap Domain Name", time:"15 min",
+    tag:"STEP 4 OF 6",
+    intro:"Your site will be live at something like wazibiz.netlify.app (free). If you want wazibiz.co.za, we'll show you where to get it for R60/year and connect it in minutes.",
+  },
+  {
+    id:5, icon:"🔒", label:"HTTPS", color:"#25D366",
+    title:"Secure Your Site with Free HTTPS", time:"5 min",
+    tag:"STEP 5 OF 6",
+    intro:"HTTPS means your site shows a padlock 🔒 in the browser — customers trust it more. Netlify does this automatically for free. Nothing to install.",
+  },
+  {
+    id:6, icon:"✅", label:"Go Live!", color:"#f0c040",
+    title:"You're Live — Share WaziBiz!", time:"Done!",
+    tag:"STEP 6 OF 6",
+    intro:"Your WaziBiz website is now live on the internet. Here's how to share it with traders, put it on WhatsApp, and keep it updated as your business grows.",
+  },
+];
+
+let current = 0;
+const doneSteps = new Set();
+const checkState = {}; // track checkbox state per step
+
+function buildProgress(){
+  const strip = document.getElementById('progressStrip');
+  strip.innerHTML = '';
+  STEPS.forEach((s,i) => {
+    if(i > 0){
+      const line = document.createElement('div');
+      line.className = 'prog-line' + (doneSteps.has(i) ? ' done' : '');
+      strip.appendChild(line);
+    }
+    const div = document.createElement('div');
+    div.className = 'prog-step';
+    div.onclick = () => goTo(i);
+    const num = document.createElement('div');
+    num.className = 'prog-num' + (current === i ? ' active' : doneSteps.has(i) ? ' done' : '');
+    num.textContent = doneSteps.has(i) ? '✓' : (i === 0 ? '★' : i);
+    const lbl = document.createElement('div');
+    lbl.className = 'prog-lbl';
+    lbl.textContent = s.label;
+    div.appendChild(num); div.appendChild(lbl);
+    strip.appendChild(div);
+  });
+}
+
+function goTo(n){
+  current = n;
+  buildProgress();
+  renderStep();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderStep(){
+  const mc = document.getElementById('mainContent');
+  mc.innerHTML = '';
+  if(current === 0){ renderOverview(mc); return; }
+  const s = STEPS[current];
+  const sec = document.createElement('div');
+  sec.className = 'step-section active';
+
+  // Header
+  sec.innerHTML += `
+    <div class="step-header">
+      <div class="step-meta">
+        <div class="step-num-big" style="background:${s.color}18;border:2px solid ${s.color}44;color:${s.color};">${s.icon}</div>
+        <div>
+          <div class="step-tag">${s.tag}</div>
+        </div>
+        <div class="step-time">⏱ ${s.time}</div>
+      </div>
+      <h2 class="step-title">${s.title}</h2>
+      <p class="step-intro">${s.intro}</p>
+    </div>`;
+
+  // Body content per step
+  const body = document.createElement('div');
+  STEP_CONTENT[current](body);
+  sec.appendChild(body);
+
+  // Checklist
+  const cl = buildChecklist(current);
+  sec.appendChild(cl);
+
+  // Navigation
+  const nav = document.createElement('div');
+  nav.className = 'step-nav';
+  const left = document.createElement('div');
+  left.style.display = 'flex'; left.style.gap = '10px'; left.style.alignItems = 'center';
+  if(current > 0){
+    const back = document.createElement('button');
+    back.className = 'btn-back';
+    back.textContent = current === 1 ? '← Overview' : `← Step ${current-1}`;
+    back.onclick = () => goTo(current - 1);
+    left.appendChild(back);
+  }
+  const ovBtn = document.createElement('button');
+  ovBtn.className = 'btn-overview';
+  ovBtn.textContent = '📋 All Steps';
+  ovBtn.onclick = () => goTo(0);
+  left.appendChild(ovBtn);
+
+  const next = document.createElement('button');
+  next.className = 'btn-next';
+  if(current < STEPS.length - 1){
+    next.textContent = `✓ Done → Step ${current + 1}`;
+    next.onclick = () => { doneSteps.add(current); goTo(current + 1); };
+  } else {
+    next.textContent = '🎉 My Site is Live!';
+    next.onclick = () => { doneSteps.add(current); goTo(0); };
+  }
+  nav.appendChild(left); nav.appendChild(next);
+  sec.appendChild(nav);
+  mc.appendChild(sec);
+}
+
+const CHECKLISTS = {
+  1:["Opened Claude.ai and found my WaziBiz landing page file","Downloaded / copied the HTML file","Saved it on my device as wazibiz.html","Confirmed the file opens in my browser and looks correct"],
+  2:["Visited github.com and clicked Sign Up","Created account with my email","Verified my email address","Created a new repository called 'wazibiz-website'","Uploaded wazibiz.html to the repository","File is visible in the repository"],
+  3:["Visited netlify.com and clicked Sign Up with GitHub","Authorized Netlify to access my GitHub","Clicked 'Add new site' → 'Import from Git'","Selected my wazibiz-website repository","Clicked Deploy — site went live!","Copied my free Netlify URL (e.g. wazibiz.netlify.app)","Opened the URL in my browser — site looks perfect"],
+  4:["Decided on free Netlify subdomain OR custom domain","If custom: visited registry.net.za and searched for wazibiz.co.za","Registered the domain (R60–R80/year)","In Netlify: went to Domain Settings → Add custom domain","Typed in wazibiz.co.za","Updated DNS nameservers at my domain registrar to Netlify's","Waited 10–30 min for DNS to activate","Site now loads at my custom domain"],
+  5:["Opened Netlify Dashboard → my site → Domain Settings","Scrolled to HTTPS section","Clicked 'Verify DNS configuration'","Clicked 'Provision certificate'","Waited 2–5 minutes","Refreshed — padlock 🔒 appears in browser bar","Site loads on https:// — secure!"],
+  6:["Copied my live website URL","Created a WhatsApp status update sharing the link","Shared in relevant WhatsApp community groups","Posted on Facebook with a short video demo","Added website link to my WhatsApp Business profile","Created a free QR code at qr-code-generator.com","Printed QR code on flyers or displayed at events"],
+};
+
+function buildChecklist(stepId){
+  const items = CHECKLISTS[stepId] || [];
+  if(!items.length) return document.createElement('div');
+  if(!checkState[stepId]) checkState[stepId] = new Array(items.length).fill(false);
+
+  const wrap = document.createElement('div');
+  wrap.className = 'checklist';
+
+  const titleRow = document.createElement('div');
+  titleRow.className = 'checklist-title';
+  const titleTxt = document.createElement('span');
+  titleTxt.textContent = '✅ Step Checklist';
+  const pct = document.createElement('span');
+  pct.className = 'check-pct';
+  titleRow.appendChild(titleTxt); titleRow.appendChild(pct);
+  wrap.appendChild(titleRow);
+
+  const bar = document.createElement('div'); bar.className = 'check-bar';
+  const fill = document.createElement('div'); fill.className = 'check-fill';
+  bar.appendChild(fill); wrap.appendChild(bar);
+
+  const update = () => {
+    const done = checkState[stepId].filter(Boolean).length;
+    const p = Math.round((done/items.length)*100);
+    fill.style.width = p + '%';
+    pct.textContent = p + '% done';
+  };
+
+  items.forEach((txt, i) => {
+    const row = document.createElement('div'); row.className = 'check-item';
+    const box = document.createElement('div');
+    box.className = 'check-box' + (checkState[stepId][i] ? ' ticked' : '');
+    const lbl = document.createElement('span');
+    lbl.className = 'check-lbl' + (checkState[stepId][i] ? ' done' : '');
+    lbl.textContent = txt;
+    row.appendChild(box); row.appendChild(lbl);
+    row.onclick = () => {
+      checkState[stepId][i] = !checkState[stepId][i];
+      box.className = 'check-box' + (checkState[stepId][i] ? ' ticked' : '');
+      lbl.className = 'check-lbl' + (checkState[stepId][i] ? ' done' : '');
+      update();
+    };
+    wrap.appendChild(row);
+  });
+  update();
+  return wrap;
+}
+
+function tip(type,icon,text){ return `<div class="tip tip-${type}"><span class="tip-icon">${icon}</span><div class="tip-text">${text}</div></div>`; }
+function code(lang,content){ return `<div class="code-wrap"><div class="code-bar"><span class="code-lang">${lang}</span><button class="copy-btn" onclick="copyCode(this,'${encodeURIComponent(content)}')">Copy</button></div><pre>${content}</pre></div>`; }
+function numStep(n,color,title,desc,link){ return `<div class="num-step"><div class="n-badge" style="background:${color}18;border-color:${color}44;color:${color};">${n}</div><div><div class="n-title">${title}</div><div class="n-desc">${desc}</div>${link ? `<a href="${link}" target="_blank" class="n-link" style="background:${color}">Open →</a>` : ''}</div></div>`; }
+
+function copyCode(btn, encoded){
+  const text = decodeURIComponent(encoded);
+  navigator.clipboard?.writeText(text).catch(()=>{});
+  btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+  setTimeout(()=>{ btn.textContent='Copy'; btn.classList.remove('copied'); }, 2000);
+}
+
+const STEP_CONTENT = {
+  1:(el) => {
+    el.innerHTML = `
+    <div class="block">
+      ${tip('free','🆓','Your WaziBiz landing page is a single .html file — one file is all you need to publish a complete professional website. No WordPress, no plugins, no monthly fees.')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">📋 How to get your WaziBiz HTML file</div>
+      <div class="num-steps">
+        ${numStep(1,'#25D366','Find the file in Claude','Go back to your Claude conversation where the landing page was created. Scroll up to find the WaziBiz landing page artifact.','')}
+        ${numStep(2,'#25D366','Download the file','Click the download icon (⬇️) on the artifact, or click the three dots menu → Download. Save it as <strong>index.html</strong> on your device.','')}
+        ${numStep(3,'#4a9fff','Test it locally','Find the saved file on your computer. Double-click it — it should open in your browser and look exactly like the preview.','')}
+        ${numStep(4,'#ff8c42','Rename if needed','Make sure the file is named exactly <strong>index.html</strong> (lowercase). This is important — Netlify looks for index.html by default.','')}
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">📱 If you're on a phone (Android)</div>
+      ${tip('info','📱','On Android: tap the Claude artifact → tap the three dots → Share → Save to Files. Then in your Files app, find the download and rename it to index.html.')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">🖥️ Customise before publishing (optional)</div>
+      <p style="color:var(--mut);font-size:13px;line-height:1.7;margin-bottom:10px;">Open index.html in any text editor (Notepad on Windows, TextEdit on Mac) and update these details:</p>
+      ${code('Things to update in your HTML file',
+`1. Your WhatsApp number:
+   Find: href="https://wa.me/27000000000"
+   Replace: href="https://wa.me/YOUR_ACTUAL_NUMBER"
+   Example: href="https://wa.me/27821234567"
+
+2. Your business name (if different from MamaBiz):
+   Find: MamaBiz Store
+   Replace: Your actual business name
+
+3. Your PayFast payment links:
+   Find: href="#" (on the pricing buttons)
+   Replace: Your actual PayFast subscription URLs
+
+4. Testimonials (optional):
+   Update the names, locations, and quotes
+   to real feedback from your first clients`)}
+    </div>
+    `;
+  },
+
+  2:(el) => {
+    el.innerHTML = `
+    <div class="block">
+      ${tip('info','💡','GitHub is free forever for public projects. Your website files stored there count as a public project — no cost ever. Over 100 million developers use it.')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">🔧 Create your GitHub account</div>
+      <div class="num-steps">
+        ${numStep(1,'#4a9fff','Go to GitHub','Open your browser and go to github.com. Click the big green Sign Up button.','https://github.com')}
+        ${numStep(2,'#4a9fff','Enter your details','Type your email, create a password, and choose a username. Use something professional like <strong>wazibiz</strong> or your own name.Use lowercase only.','')}
+        ${numStep(3,'#4a9fff','Verify your email','GitHub sends a verification email. Open it and click Confirm email address. Check your spam folder if you don\'t see it.','')}
+        ${numStep(4,'#4a9fff','Skip the survey','GitHub asks about your experience level. Click Skip personalisation at the bottom — it doesn\'t affect anything.','')}
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">📁 Create your website repository</div>
+      <div class="num-steps">
+        ${numStep(1,'#25D366','Click New repository','Once logged in, click the green New button on the left, or go to github.com/new.','')}
+        ${numStep(2,'#25D366','Name your repository','Type: <strong>wazibiz-website</strong>. Make sure it\'s set to Public (not Private — Netlify needs to read it).','')}
+        ${numStep(3,'#25D366','Create the repository','Scroll down and click Create repository. You now have an empty folder on GitHub.','')}
+        ${numStep(4,'#25D366','Upload your file','Click Upload files → drag and drop your index.html file → scroll down and click Commit changes.','')}
+      </div>
+      ${tip('good','✅','After uploading, you should see index.html listed in your repository. If you can click it and see your HTML code — you\'re ready for Step 3!')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">📱 Uploading from a phone</div>
+      ${tip('info','📱','On mobile: In GitHub, tap the + button → Upload files → tap Choose files → find your index.html in your Downloads or Files folder → tap Commit changes.')}
+    </div>
+
+    <div class="screen-mock">
+      <div class="screen-bar">
+        <div class="screen-dots"><div class="screen-dot" style="background:#ff5252"></div><div class="screen-dot" style="background:#f0c040"></div><div class="screen-dot" style="background:#25D366"></div></div>
+        <div class="screen-url">github.com/yourusername/wazibiz-website</div>
+      </div>
+      <div class="screen-body">
+        <div style="font-size:13px;color:var(--txt);margin-bottom:8px;font-weight:700;">📁 wazibiz-website</div>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--s2);padding:10px 12px;border-radius:8px;border:1px solid var(--bdr);">
+          <span style="font-size:16px;">📄</span>
+          <span style="color:var(--g);font-size:13px;font-weight:600;">index.html</span>
+          <span style="color:var(--mut);font-size:11px;margin-left:auto;">Added WaziBiz landing page · just now</span>
+        </div>
+        <div style="margin-top:10px;padding:10px 12px;background:rgba(37,211,102,0.05);border:1px solid rgba(37,211,102,0.15);border-radius:8px;font-size:12px;color:var(--g);">
+          ✅ 1 file uploaded successfully — ready to deploy!
+        </div>
+      </div>
+    </div>
+    `;
+  },
+
+  3:(el) => {
+    el.innerHTML = `
+    <div class="block">
+      ${tip('free','🆓','Netlify free plan: unlimited personal projects, 100GB bandwidth/month, automatic HTTPS, custom domains. More than enough for WaziBiz — forever free.')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">🚀 Deploy in 3 clicks</div>
+      <div class="num-steps">
+        ${numStep(1,'#ff8c42','Sign up on Netlify','Go to netlify.com and click Sign Up. Choose Sign up with GitHub — this links your account automatically.','https://netlify.com')}
+        ${numStep(2,'#ff8c42','Add new site','Once logged in, click Add new site → Import an existing project → Deploy with GitHub.','')}
+        ${numStep(3,'#ff8c42','Pick your repository','Netlify shows your GitHub repositories. Click wazibiz-website.','')}
+        ${numStep(4,'#ff8c42','Deploy!','Leave all settings as default and click Deploy site. Netlify builds and publishes in about 30 seconds.','')}
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">🔗 Your free URL</div>
+      <p style="color:var(--mut);font-size:13px;line-height:1.7;margin-bottom:10px;">Netlify gives you a random URL like:</p>
+      ${code('Your auto-generated Netlify URL (example)',
+`https://graceful-otter-4a9f32.netlify.app
+
+You can change this to something nicer:
+→ In Netlify dashboard → Site Settings → Site details
+→ Click "Change site name"
+→ Type: wazibiz
+→ Your site becomes: https://wazibiz.netlify.app`)}
+      ${tip('good','✅','wazibiz.netlify.app is a real working URL you can share RIGHT NOW. No domain purchase needed. Share it on WhatsApp immediately!')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">⚡ Alternative: Drag & Drop (even simpler)</div>
+      <div class="num-steps">
+        ${numStep(1,'#25D366','Go to Netlify Drop','Visit app.netlify.com/drop — no account needed for a quick test.','https://app.netlify.com/drop')}
+        ${numStep(2,'#25D366','Drag your file','Drag your index.html file from your computer directly onto the Netlify browser page.','')}
+        ${numStep(3,'#25D366','Site goes live!','Netlify instantly gives you a live URL. To keep it permanently and edit it later, create a free account.','')}
+      </div>
+      ${tip('warn','⚠️','The drag & drop method gives a temporary URL that expires. Use the GitHub method for a permanent site. But drag & drop is great for a quick preview!')}
+    </div>
+
+    <div class="screen-mock">
+      <div class="screen-bar">
+        <div class="screen-dots"><div class="screen-dot" style="background:#ff5252"></div><div class="screen-dot" style="background:#f0c040"></div><div class="screen-dot" style="background:#25D366"></div></div>
+        <div class="screen-url">app.netlify.com/sites/wazibiz</div>
+      </div>
+      <div class="screen-body">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <div style="font-weight:700;color:var(--txt)">wazibiz</div>
+          <div style="background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:99px;padding:3px 12px;font-size:11px;color:var(--g);font-weight:700;">● Published</div>
+        </div>
+        <div style="background:var(--s2);border-radius:8px;padding:12px;border:1px solid var(--bdr);">
+          <div style="font-size:11px;color:var(--mut);margin-bottom:4px;">Your live URL:</div>
+          <div style="color:var(--g);font-weight:700;font-size:14px;">https://wazibiz.netlify.app</div>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:var(--g);">✅ Deployed 30 seconds ago from GitHub · HTTPS active · 0 errors</div>
+      </div>
+    </div>
+    `;
+  },
+
+  4:(el) => {
+    el.innerHTML = `
+    <div class="block">
+      <div class="block-title">🤔 Do you need a custom domain?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;">
+        <div style="background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:12px;padding:16px;">
+          <div style="font-weight:700;color:var(--g);margin-bottom:8px;">✅ Free subdomain is fine if:</div>
+          <div style="color:var(--mut);font-size:12px;line-height:1.7;">• You're just getting started<br/>• You want zero cost<br/>• Sharing via WhatsApp link<br/>• Testing with first clients</div>
+          <div style="margin-top:10px;font-size:12px;color:var(--g);font-weight:700;">→ wazibiz.netlify.app</div>
+        </div>
+        <div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.2);border-radius:12px;padding:16px;">
+          <div style="font-weight:700;color:var(--gold);margin-bottom:8px;">🌐 Custom domain is better if:</div>
+          <div style="color:var(--mut);font-size:12px;line-height:1.7;">• You want to look professional<br/>• Running paid ads<br/>• Printing on flyers<br/>• Growing the business</div>
+          <div style="margin-top:10px;font-size:12px;color:var(--gold);font-weight:700;">→ wazibiz.co.za (R60/yr)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">🌐 Where to get wazibiz.co.za cheap</div>
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-icon">🇿🇦</div>
+          <div class="tool-name">registry.net.za</div>
+          <span class="tool-cost free">~R60/year</span>
+          <div class="tool-desc">Official SA domain registrar. Cheapest .co.za. Simple interface. Recommended for beginners.</div>
+          <div class="tool-rec">⭐ Best for .co.za</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">🌍</div>
+          <div class="tool-name">domains.co.za</div>
+          <span class="tool-cost free">~R75/year</span>
+          <div class="tool-desc">Popular SA registrar. Good support. Slightly pricier but great dashboard and local support team.</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">🌐</div>
+          <div class="tool-name">Namecheap</div>
+          <span class="tool-cost free">~R100/year</span>
+          <div class="tool-desc">International registrar. Great for .com domains. Free privacy protection included.</div>
+          <div class="tool-rec">Best for .com</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">✨</div>
+          <div class="tool-name">Freenom</div>
+          <span class="tool-cost free">FREE</span>
+          <div class="tool-desc">.tk / .ml / .ga domains are free. Not professional-looking but good for testing. Not recommended for production.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">🔧 Connect your domain to Netlify (10 min)</div>
+      <div class="num-steps">
+        ${numStep(1,'#f0c040','Register your domain','Go to registry.net.za, search for wazibiz.co.za, add to cart, pay (~R60). You\'ll get access to DNS settings.','https://registry.net.za')}
+        ${numStep(2,'#f0c040','Open Netlify → Domain settings','In your Netlify dashboard, go to your site → Domain management → Add a domain. Type: wazibiz.co.za.','')}
+        ${numStep(3,'#f0c040','Get Netlify\'s nameservers','Netlify shows 4 nameserver addresses like dns1.p04.nsone.net. Copy all 4.','')}
+        ${numStep(4,'#f0c040','Update DNS at your registrar','In registry.net.za, find DNS / Nameservers settings. Delete the existing ones and paste Netlify\'s 4 nameservers.','')}
+        ${numStep(5,'#f0c040','Wait for propagation','DNS changes take 10 minutes to 24 hours to activate globally. Usually it\'s 15–30 minutes in SA.','')}
+      </div>
+      ${code('Netlify nameservers — paste these into your registrar',
+`dns1.p04.nsone.net
+dns2.p04.nsone.net
+dns3.p04.nsone.net
+dns4.p04.nsone.net
+
+Note: Your exact nameservers may differ slightly.
+Copy the exact ones Netlify shows you — don't use the above verbatim.`)}
+      ${tip('good','✅','Once DNS activates, Netlify automatically gives your custom domain a free SSL certificate (HTTPS). The padlock appears automatically — nothing to install!')}
+    </div>
+    `;
+  },
+
+  5:(el) => {
+    el.innerHTML = `
+    <div class="block">
+      ${tip('good','🔒','Good news: Netlify handles HTTPS completely automatically. If you used Netlify to host (Step 3), HTTPS is already active on your free subdomain. This step is just to verify and understand it.')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">✅ Check your HTTPS is working</div>
+      <div class="num-steps">
+        ${numStep(1,'#25D366','Open your site URL','Go to https://wazibiz.netlify.app (or your custom domain) in your browser.','')}
+        ${numStep(2,'#25D366','Look for the padlock','In the browser address bar, you should see a 🔒 padlock icon to the left of the URL.','')}
+        ${numStep(3,'#25D366','If no padlock — check Netlify','Go to Netlify Dashboard → your site → Domain management → HTTPS section. Click Verify DNS and then Provision certificate.','')}
+        ${numStep(4,'#25D366','Wait 5 minutes and refresh','Certificate provisioning takes a few minutes. Refresh your site — the padlock should appear.','')}
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">❓ Why does HTTPS matter?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;">
+        <div style="background:rgba(37,211,102,0.05);border:1px solid rgba(37,211,102,0.2);border-radius:12px;padding:14px;">
+          <div style="font-weight:700;color:var(--g);margin-bottom:8px;">🔒 With HTTPS</div>
+          <div style="color:var(--mut);font-size:12px;line-height:1.7;">✓ Browser shows padlock<br/>✓ Customers trust your site<br/>✓ Google ranks you higher<br/>✓ Payments work correctly<br/>✓ WhatsApp link previews work</div>
+        </div>
+        <div style="background:rgba(255,82,82,0.05);border:1px solid rgba(255,82,82,0.2);border-radius:12px;padding:14px;">
+          <div style="font-weight:700;color:var(--red);margin-bottom:8px;">⚠️ Without HTTPS</div>
+          <div style="color:var(--mut);font-size:12px;line-height:1.7;">✗ Browser shows "Not Secure"<br/>✗ Customers click away scared<br/>✗ PayFast won't work<br/>✗ Google penalises the site<br/>✗ Some phones block it</div>
+        </div>
+      </div>
+      ${tip('free','🆓','Netlify\'s free HTTPS uses Let\'s Encrypt — a trusted certificate authority used by millions of websites. It renews automatically every 90 days. You never need to touch it again.')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">⚡ Force HTTPS (redirect http to https)</div>
+      <p style="color:var(--mut);font-size:13px;line-height:1.7;margin-bottom:10px;">In Netlify Dashboard → Site settings → Domain management → HTTPS → scroll down and enable <strong>Force HTTPS</strong>. This means anyone who visits http:// gets automatically redirected to the secure https:// version.</p>
+      ${tip('good','✅','Once Force HTTPS is enabled, your site is fully secure. The padlock will always show. Your WaziBiz site now looks as professional as any big company website.')}
+    </div>
+    `;
+  },
+
+  6:(el) => {
+    el.innerHTML = `
+    <div class="block">
+      ${tip('good','🎉','Congratulations! Your WaziBiz website is live on the internet. Now let\'s get it in front of as many traders as possible — for free.')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">📤 Share your site — free marketing</div>
+      <div class="num-steps">
+        ${numStep(1,'#25D366','WhatsApp Status','Post your website URL on your WhatsApp Status with a short message: "🚀 WaziBiz is live! Run your business from WhatsApp — invoices, stock, tax reports. Try free for 30 days 👇 wazibiz.co.za"','')}
+        ${numStep(2,'#25D366','WhatsApp Groups','Share in: local business groups, spaza shop groups, market trader groups, taxi association groups, church business networks. Ask group admins for permission first.','')}
+        ${numStep(3,'#4a9fff','Facebook','Post in: "Buy and Sell" groups in your city, small business groups, entrepreneur groups. Post a short video demo of the bot working — videos get 3x more views.','')}
+        ${numStep(4,'#f0c040','QR Code Flyer','Generate a free QR code at qr-code-generator.com pointing to your site. Print it on A5 flyers (R1 each at a local print shop) and hand them out at markets.','https://www.qr-code-generator.com')}
+        ${numStep(5,'#ff8c42','Go door to door','Visit 10 spaza shops, hawkers, or market stalls near you. Show them the bot on your phone. Offer a free 30-day trial. Sign up 3–5 clients this week.','')}
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">🔄 How to update your website</div>
+      <div class="num-steps">
+        ${numStep(1,'#4a9fff','Edit your HTML file','Open index.html in Notepad or any text editor. Make your changes — update prices, add a testimonial, change the WhatsApp number.','')}
+        ${numStep(2,'#4a9fff','Upload to GitHub','Go to your GitHub repository → click index.html → click the pencil ✏️ edit icon → paste your updated code → click Commit changes.','')}
+        ${numStep(3,'#25D366','Netlify auto-deploys','Within 30 seconds, Netlify detects the GitHub change and automatically republishes your site. No manual steps needed.','')}
+      </div>
+      ${tip('info','💡','Every time you push to GitHub, Netlify rebuilds and redeploys automatically. Your site is always up to date within 30 seconds of any change.')}
+    </div>
+
+    <div class="block">
+      <div class="block-title">💰 Your complete free cost breakdown</div>
+      <div style="background:var(--card);border:1px solid var(--bdr);border-radius:14px;overflow:hidden;margin:12px 0;">
+        <table class="cost-table">
+          <thead><tr><th>Service</th><th>What it gives you</th><th>Monthly cost</th></tr></thead>
+          <tbody>
+            <tr><td>GitHub</td><td>Store your website files</td><td class="cost-free">R0</td></tr>
+            <tr><td>Netlify</td><td>Host & publish the website</td><td class="cost-free">R0</td></tr>
+            <tr><td>HTTPS (SSL)</td><td>Security padlock via Let's Encrypt</td><td class="cost-free">R0</td></tr>
+            <tr><td>CDN (speed)</td><td>Fast loading worldwide</td><td class="cost-free">R0</td></tr>
+            <tr><td>wazibiz.netlify.app</td><td>Free subdomain (forever)</td><td class="cost-free">R0</td></tr>
+            <tr><td>wazibiz.co.za (optional)</td><td>Custom SA domain</td><td class="cost-free">R5/mo (R60/yr)</td></tr>
+            <tr style="background:rgba(37,211,102,0.04)"><td><strong>TOTAL</strong></td><td><strong>Full professional website</strong></td><td class="cost-total">R0 – R5/mo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">📊 Track your visitors for free</div>
+      ${tip('info','📈','Add free Google Analytics to see how many people visit your site, where they come from, and which pages they view. Go to analytics.google.com → create a free account → get a tracking code → paste it before the </head> tag in your index.html.')}
+    </div>
+
+    <div style="background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.25);border-radius:16px;padding:28px;text-align:center;margin-top:24px;">
+      <div style="font-size:36px;margin-bottom:12px;">🌍</div>
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:900;color:var(--g);margin-bottom:8px;">WaziBiz is LIVE!</div>
+      <p style="color:var(--mut);font-size:14px;line-height:1.7;margin-bottom:20px;">Your professional business website is on the internet.<br/>Now go get your first paying clients — they're waiting! 💪</p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <a href="https://netlify.com" target="_blank" style="background:var(--g);color:#0a1a0e;border-radius:10px;padding:10px 22px;font-weight:700;text-decoration:none;font-size:14px;">🚀 Open Netlify</a>
+        <a href="https://github.com" target="_blank" style="background:transparent;border:1px solid var(--bdr);color:var(--txt);border-radius:10px;padding:10px 22px;font-weight:700;text-decoration:none;font-size:14px;">📁 Open GitHub</a>
+      </div>
+    </div>
+    `;
+  },
+};
+
+function renderOverview(mc){
+  const sec = document.createElement('div');
+  sec.className = 'step-section active';
+  sec.innerHTML = `
+    <div style="text-align:center;margin-bottom:32px;">
+      <h2 style="font-size:clamp(26px,4vw,40px);letter-spacing:-1.5px;margin-bottom:12px;">6 Steps to a Live Website</h2>
+      <p style="color:var(--mut);font-size:15px;line-height:1.7;max-width:500px;margin:0 auto;">All free. No coding knowledge required. From saved file to live website in under 60 minutes.</p>
+    </div>
+
+    <div style="background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:14px;padding:20px;margin-bottom:28px;display:flex;align-items:center;gap:14px;">
+      <span style="font-size:32px;">💰</span>
+      <div>
+        <div style="font-weight:700;color:var(--g);font-size:15px;">Total cost: R0 per month</div>
+        <div style="color:var(--mut);font-size:13px;margin-top:3px;">GitHub + Netlify + HTTPS are all completely free. Optional custom .co.za domain = R60/year (R5/month).</div>
+      </div>
+    </div>
+
+    <div class="overview-grid">
+      ${STEPS.filter(s=>s.id>0).map(s => `
+        <div class="ov-item" onclick="goTo(${s.id})">
+          <div class="ov-num">${s.id}</div>
+          <div class="ov-icon">${s.icon}</div>
+          <div style="flex:1">
+            <div class="ov-title">${s.title}</div>
+            <div class="ov-meta">⏱ ${s.time}</div>
+          </div>
+          <div class="ov-badge ${doneSteps.has(s.id)?'done':''}">${doneSteps.has(s.id)?'✓ Done':'Open →'}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <button class="btn-next" style="font-size:16px;padding:16px 40px;" onclick="goTo(1)">
+        🚀 Start with Step 1 →
+      </button>
+    </div>
+
+    <div style="margin-top:32px;background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:20px;">
+      <div style="font-weight:700;color:var(--txt);margin-bottom:14px;">🛠️ Tools you'll use (all free)</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
+        ${[
+          ['📁','GitHub','File storage','Free forever'],
+          ['🚀','Netlify','Web hosting','Free forever'],
+          ['🔒','Let\'s Encrypt','HTTPS security','Free forever'],
+          ['🌐','registry.net.za','.co.za domain','R60/year optional'],
+        ].map(([ic,name,role,cost]) => `
+          <div style="background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:12px;text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">${ic}</div>
+            <div style="font-weight:700;color:var(--txt);font-size:13px;">${name}</div>
+            <div style="color:var(--mut);font-size:11px;margin-top:2px;">${role}</div>
+            <div style="color:var(--g);font-size:11px;font-weight:700;margin-top:4px;">${cost}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  mc.appendChild(sec);
+}
+
+// Init
+buildProgress();
+renderStep();
+</script>
+</body>
+</html>
